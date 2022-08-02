@@ -1,13 +1,12 @@
-import type { NextPage } from 'next'
+import type { NextPageWithLayout } from 'next'
+import LayoutDefault from '#/layouts/default/index'
 // import Head from 'next/head'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
-    <>
-      hi Home
-    </>
+    <>hi Home</>
     // <div className={styles.container}>
     //   <Head>
     //     <title>Create Next App</title>
@@ -73,3 +72,11 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+Home.getLayout = function (page: any) {
+  return (
+    <LayoutDefault>
+      <Home>{page}</Home>
+    </LayoutDefault>
+  )
+}

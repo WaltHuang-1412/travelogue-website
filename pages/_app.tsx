@@ -1,14 +1,14 @@
 import 'normalize.css/normalize.css'
 import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
-import LayoutDefault from '#/layouts/default/index'
+import type { Page } from '../types/page'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <LayoutDefault>
-      <Component {...pageProps} />
-    </LayoutDefault>
-  )
+type Props = AppProps & {
+  Component: Page
+}
+function MyApp({ Component, pageProps }: Props) {
+  const getLayout = Component.getLayout ?? ((page: any) => page)
+  return getLayout(<Component {...pageProps} />)
 }
 
 export default MyApp
