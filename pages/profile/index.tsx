@@ -1,16 +1,16 @@
-import type { NextPage } from 'next'
-import LayoutLogin from '#/layouts/login/index'
+import type { NextPageWithLayout } from "next";
+import LayoutLogin from "#/layouts/login/index";
 
-const Profile: NextPage = () => {
-  return <>hi Profile</>
-}
+const Profile: NextPageWithLayout = () => {
+  return <>hi Profile</>;
+};
 
-export default Profile
+export default Profile;
 
-Profile.getLayout = function (page) {
+Profile.getLayout = function (page: any) {
   return (
     <LayoutLogin>
       <Profile>{page}</Profile>
     </LayoutLogin>
-  )
-}
+  );
+};
