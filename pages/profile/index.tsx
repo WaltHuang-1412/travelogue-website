@@ -1,32 +1,13 @@
-import type { NextPageWithLayout, GetStaticProps, AppProps } from "next";
-import LayoutLogin from "#/layouts/login/index";
+import type { ReactElement } from "react";
+import DefaultLayout from "#/layouts/default";
+import type { NextPageWithLayout } from "~/pages/_app";
 
-const Profile: NextPageWithLayout = (context: AppProps) => {
-  const { children } = context;
-  const { props } = children;
-  const { posts } = props;
-  console.log("posts :>> ", posts);
-  return <>hi {posts.id}</>;
+const Profile: NextPageWithLayout = () => {
+  return <p>hello world</p>;
 };
 
-export const getStaticProps: GetStaticProps = () => {
-  const posts = {
-    id: 1,
-    description: "12313",
-  };
-  return {
-    props: {
-      posts,
-    },
-  };
+Profile.getLayout = function getLayout(page: ReactElement) {
+  return <DefaultLayout>{page}</DefaultLayout>;
 };
 
 export default Profile;
-
-Profile.getLayout = function (page: any) {
-  return (
-    <LayoutLogin>
-      <Profile>{page}</Profile>
-    </LayoutLogin>
-  );
-};
